@@ -21,6 +21,8 @@ export interface Question {
   version: Version;
   rights: string;
   family?: string;
+  conceptId?: string;
+  itemFormat?: "recall" | "application" | "critical";
   calculation?: {
     kind: string;
     values: number[];
@@ -35,6 +37,7 @@ export const TYPE_LABEL = {
   past: "원문 기출",
   reconstructed: "복원문제",
 };
+export const FORMAT_LABEL = { recall: "개념 확인", application: "사례 적용", critical: "오개념 판별" };
 export const VERSION_LABEL = {
   main: "기본 문제은행",
 };
@@ -122,7 +125,7 @@ export function createExam(
     version,
     questions: shuffled(
       pools.flatMap((pool) => {
-        // Give each authored question / calculated family one initial slot.
+        // Give each authored question / linked concept or variant family one initial slot.
         // This avoids treating 30 number variants as 30 independent exam topics.
         const groups = new Map<string, Question[]>();
         for (const question of pool) {
@@ -340,8 +343,12 @@ export function validateQuestion(value: unknown): Question {
     (typeof q.family !== "string" || !q.family.trim() || q.family.length > 100)
   )
     throw new Error(
-      "계산 유형 family는 비어 있지 않은 100자 이내 문자열이어야 합니다.",
+      "연결 유형 family는 비어 있지 않은 100자 이내 문자열이어야 합니다.",
     );
+  if (q.itemFormat !== undefined && !["recall", "application", "critical"].includes(q.itemFormat as string))
+    throw new Error("문제 형식을 확인하세요.");
+  if (q.conceptId !== undefined && (typeof q.conceptId !== "string" || !q.conceptId.trim() || q.conceptId.length > 100))
+    throw new Error("연결 개념 ID를 확인하세요.");
   if (!SUBJECTS.includes(q.subject as Subject))
     throw new Error("과목이 올바르지 않습니다.");
   if (

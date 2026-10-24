@@ -34,7 +34,7 @@ test("학습 기준 선택 제거·모바일 화면·이전 선택 복원", asyn
       () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
   ).toBe(true);
-  await expect(page.locator(".bank-summary")).toContainText(/등록\s*100문항/);
+  await expect(page.locator(".bank-summary")).toContainText(/등록\s*1000문항/);
   await expect(page.getByLabel("학습 기준")).toHaveCount(0);
   await expect(page.locator("main")).not.toContainText("학습 기준");
   await expect(page.locator("main")).not.toContainText("2027–2029");
@@ -199,7 +199,7 @@ test("JSON 등록·중복 제거·검수 대기·사용자 검수·CSV 등록·�
   await expectNoDefaultVersionYears(page);
   await expect(page.locator(".bank-filter")).toContainText("기본 문제은행");
   await expect(page.locator(".bank-row")).toHaveCount(20);
-  await expect(page.locator(".pagination")).toContainText("1 / 5");
+  await expect(page.locator(".pagination")).toContainText("1 / 50");
   await page.getByLabel("문항 검색", { exact: true }).fill("VC2-5-020");
   await expect(page.locator(".bank-row")).toHaveCount(1);
   await page.locator(".bank-row summary").click();

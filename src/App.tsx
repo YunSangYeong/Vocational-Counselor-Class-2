@@ -56,6 +56,7 @@ import {
   SUBJECTS,
   submitExam,
   TYPE_LABEL,
+  FORMAT_LABEL,
   validateQuestion,
   VERSION_LABEL,
   type Question,
@@ -156,6 +157,8 @@ function Source({ q }: { q: Question }) {
   return (
     <div className="source">
       <span className="tag">{TYPE_LABEL[q.type]}</span>
+      <span className="tag">{FORMAT_LABEL[q.itemFormat || "recall"]}</span>
+      {q.conceptId && <span>연결 개념 {q.conceptId}</span>}
       <span>
         {q.year
           ? `${q.year}년 ${q.session ? `${q.session}회차` : ""}`
@@ -1782,7 +1785,11 @@ function BankManager({
             기본 문항은 {BASE_BANK.length}개 모두 자체 제작입니다.
           </strong>
           <br />
-          원문 기출 0 · 복원문제 0 · 숫자 변형 0. 목표 1,000문항 대비 부족 900문항.
+          원문 기출 0 · 복원문제 0 · 숫자 변형 0. 목표 1,000문항 대비 부족 {Math.max(0, 1000 - BASE_BANK.filter(q => q.verificationStatus === "reviewed").length)}문항.
+          개념 확인 {BASE_BANK.filter(q => !q.itemFormat || q.itemFormat === "recall").length} ·
+          사례 적용 {BASE_BANK.filter(q => q.itemFormat === "application").length} ·
+          오개념 판별 {BASE_BANK.filter(q => q.itemFormat === "critical").length}.
+          추가 900문항은 300개 개념의 연결 문항이며 독립 개념 900개를 뜻하지 않습니다.
           공식 원문 접근 차단으로 최신 규칙·출제기준 대조 미완료이며 시험은
           5과목 각 20문항·150분·평균 60점·과목 40점이라는 학습용 잠정 설정입니다.
           기본 문항은 AI 일반 지식 기반 자체 제작과 내부 문장 검토이며 외부 전문가
