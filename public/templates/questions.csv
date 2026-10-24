@@ -1,0 +1,2 @@
+id,subject,topic,question,choice1,choice2,choice3,choice4,answer,explanation,difficulty,year,session,type,sourceUrl,verificationStatus,reviewNote,version,rights
+VC2-IMPORT-001,직업심리,신뢰도,같은 검사를 유사한 조건에서 반복했을 때 결과가 일관적인 정도는?,신뢰도,안면타당도,사회적 바람직성,내용타당도,1,신뢰도는 측정 결과의 일관성과 관련된다. 측정하려는 속성을 적절히 측정했는지는 타당도의 문제이므로 구분해야 한다.,하,,,original,https://github.com/YunSangYeong/Vocational-Counselor-Class-2/blob/feat/vocational-counselor-cbt/docs/question-review.md,pending,출처·이용 조건·정답 검수 후 승인,main,자체 제작 학습 문항 · CC BY 4.0. 외부 기출 원문을 사용하지 않음.

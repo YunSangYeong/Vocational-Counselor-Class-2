@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "standard": {
+    "name": "cbt-site-standard",
+    "version": "1.4.0",
+    "referenceRepository": "YunSangYeong/electrician-cbt",
+    "referenceCommit": "b9a682ccff1b460334b78d5bfad9375b7ec4fbb6"
+  },
+  "qualification": {
+    "name": "직업상담사2급",
+    "slug": "vocational-counselor-2",
+    "officialIssuer": "한국산업인력공단",
+    "rulesVerificationStatus": "pending",
+    "officialSources": [
+      "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=9511"
+    ],
+    "verifiedAt": null
+  },
+  "exam": {
+    "questionCount": 100,
+    "durationMinutes": 150,
+    "choiceCount": 4,
+    "subjects": [
+      {
+        "name": "직업심리",
+        "questionCount": 20
+      },
+      {
+        "name": "직업상담 및 취업지원",
+        "questionCount": 20
+      },
+      {
+        "name": "직업정보",
+        "questionCount": 20
+      },
+      {
+        "name": "노동시장",
+        "questionCount": 20
+      },
+      {
+        "name": "고용노동관계법규",
+        "questionCount": 20
+      }
+    ],
+    "selectionPolicy": "과목별 20문항, family 우선 분산 후 부족 시 ID 중복 없이 보충. 공식 원문 접근 차단으로 학습용 잠정 설정.",
+    "scoring": {
+      "maxScore": 100,
+      "passScore": 60,
+      "hasSubjectCutoff": true,
+      "subjectCutoffs": [
+        {
+          "subject": "직업심리",
+          "minimumScore": 40
+        },
+        {
+          "subject": "직업상담 및 취업지원",
+          "minimumScore": 40
+        },
+        {
+          "subject": "직업정보",
+          "minimumScore": 40
+        },
+        {
+          "subject": "노동시장",
+          "minimumScore": 40
+        },
+        {
+          "subject": "고용노동관계법규",
+          "minimumScore": 40
+        }
+      ],
+      "unansweredPolicy": "오답, 과목별 각 문항 5점, 전체는 과목 평균"
+    }
+  },
+  "questionBank": {
+    "defaultBankId": "main",
+    "targetReviewedCount": 1000,
+    "importedDefaultStatus": "pending",
+    "types": [
+      "past",
+      "reconstructed",
+      "original"
+    ],
+    "allowNumericVariants": false,
+    "reportVariantFamiliesAndCounts": true
+  },
+  "ui": {
+    "locale": "ko-KR",
+    "showStudyCriteriaSelector": false,
+    "showBankYearRange": false,
+    "nextQuestionShortcut": "Space",
+    "shortcutModes": [
+      "exam",
+      "practice"
+    ],
+    "requireAnswerBeforeGlobalShortcut": true,
+    "autoSubmitLastQuestionOnSpace": false,
+    "officialBranding": false,
+    "showTopDisclaimerBanner": false,
+    "disclosureLocations": [
+      "footer-or-sidebar",
+      "question-bank-or-source-details",
+      "documentation"
+    ],
+    "showActionableStorageErrors": true,
+    "mobileMenuScrollable": true,
+    "mobileMenuSmallHeightRegressionRequired": true,
+    "mobileMenuTouchScrollVerificationRequired": true
+  },
+  "storage": {
+    "namespace": "vocational-counselor-2:v1",
+    "schemaVersion": 1,
+    "maxAttempts": 5000,
+    "maxExamResults": 30
+  },
+  "deployment": {
+    "provider": "github-pages",
+    "repository": "YunSangYeong/Vocational-Counselor-Class-2",
+    "branch": "main",
+    "basePath": "/Vocational-Counselor-Class-2/",
+    "publicUrl": "https://YunSangYeong.github.io/Vocational-Counselor-Class-2/",
+    "blogIframe": true,
+    "executedBy": "agent-when-authorized",
+    "trigger": "push-main-after-validation",
+    "automaticDeploymentOnPush": true,
+    "agentMayExecuteDeployment": true,
+    "requiresUserDeploymentRequest": true,
+    "maxDeploymentAttempts": 1,
+    "stopOnFirstBlock": true,
+    "userRole": "initial-settings-or-required-approval-only",
+    "explicitUserRestrictionsTakePrecedence": true
+  }
+}
